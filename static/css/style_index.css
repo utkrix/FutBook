@@ -1,0 +1,19 @@
+body{
+    background: url(https://images.unsplash.com/photo-1529900672901-908be5302554) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color:#fff;
+    background-color:#333;
+    font-family: 'Open Sans', Arial, Helvetica, Sans-Serif;
+
+}
+.welcometxt, .welcomehead{
+    font-size: 30px;
+    display: inline-block;
+    text-align: center
+}
+.booknow{
+    font-size:30px;
+}

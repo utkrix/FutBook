@@ -1,11 +1,32 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 Futsals
 {% endblock title %}
-
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_futsals.css' %}" />
+{% endblock head %}
 {% block body %}
 
-Find Futsals Here
-
+<div class="container">
+    <div class="card futsals flex-row flex-wrap" style="width: 100rem;">
+            <div class="col md-5">
+                <div class="card-header border-0">
+                    <img class="card-img-top futsal_img" src="/static/images/dhuku.jpg" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+            <div class="card-block px-2">
+                <h4 class="card-title">Dhuku Futsal</h4>
+            </div>
+            <div class="row">
+                <p class="card-text">Dhuku Futsal Hub is a recreational center where we provide the best of semi indoor 5-a-side football with training and the best of a luxurious swimming pool and swimming classes.</p>
+            </div>
+            <div class="row">
+                <a href="#" class="btn btn-primary">Book Now!</a>
+            </div>
+        </div>
+    
+</div>
 {% endblock body %}

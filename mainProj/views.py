@@ -1,13 +1,17 @@
+import imp
+from multiprocessing import context, reduction
 from django.shortcuts import  render, redirect
-from .forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+from .forms import OrderForm, CreateUserForm
 
 # Create your views here.
 
 def index(request):
     return render(request, 'index.html')
- #   return HttpResponse("Home@proj")
 
 def futsals(request):
         return render(request, 'futsals.html')
@@ -15,14 +19,21 @@ def futsals(request):
 def prevBookings(request):
     return render(request, 'previousbookings.html')
 
+
+def login(request):
+    return render(request,'login.html')
+
 def register(request):
+    form = CreateUserForm()
+    
     if request.method == "POST":
-        form = NewUserForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, "Registration successful." )
-            return redirect("main:homepage")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
-        form = NewUserForm()
-        return render (request=request, template_name="main/register.html", context={"register_form":form})
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, "Registered Successfully for" + user )
+            return redirect('login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
+
+

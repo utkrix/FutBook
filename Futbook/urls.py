@@ -23,5 +23,5 @@ admin.site.index_title = "Welcome to Futbook Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('mainProj.urls'))
+    path('', include('mainProj.urls')),
 ]

@@ -11,6 +11,7 @@ from .forms import UserLoginForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 import random
+from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
     if request.user.is_authenticated:
@@ -18,7 +19,7 @@ def home(request):
     else:
         return render(request, 'myapp/signin.html')
 
-
+@csrf_exempt 
 @login_required(login_url='signin')
 def findground(request):
     context = {}
@@ -33,8 +34,8 @@ def findground(request):
             return render(request, 'myapp/findground.html', context)
     else:
         return render(request, 'myapp/findground.html')
-
-
+#utkrix
+@csrf_exempt 
 @login_required(login_url='signin')
 def bookings(request):
     context = {}
@@ -69,7 +70,7 @@ def bookings(request):
         return render(request, 'myapp/findground.html')
 
 
-
+@csrf_exempt 
 def signup(request):
     context = {}
     if request.method == 'POST':
@@ -86,7 +87,7 @@ def signup(request):
     else:
         return render(request, 'myapp/signup.html', context)
 
-
+@csrf_exempt 
 def signin(request):
     context = {}
     if request.method == 'POST':
@@ -107,14 +108,14 @@ def signin(request):
         context["error"] = "You are not logged in"
         return render(request, 'myapp/signin.html', context)
 
-
+@csrf_exempt 
 def signout(request):
     context = {}
     logout(request)
     context['error'] = "You have been logged out"
     return render(request, 'myapp/signin.html', context)
 
-
+@csrf_exempt 
 def success(request):
     context = {}
     context['user'] = request.user

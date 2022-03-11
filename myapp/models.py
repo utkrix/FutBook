@@ -36,7 +36,7 @@ class Book(models.Model):
     BOOKED = 'B'
     CANCELLED = 'C'
 
-    TICKET_STATUSES = ((BOOKED, 'Booked'),
+    Booking_STATUSES = ((BOOKED, 'Booked'),
                        (CANCELLED, 'Cancelled'),)
     email = models.EmailField()
     name = models.CharField(max_length=30)
@@ -46,7 +46,7 @@ class Book(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=6)
     date = models.DateField()
     time = models.CharField(max_length=30)
-    status = models.CharField(choices=TICKET_STATUSES, default=BOOKED, max_length=2)
+    status = models.CharField(choices=Booking_STATUSES, default=BOOKED, max_length=2)
     code = models.CharField(default=conf_code, max_length=5)
     
 

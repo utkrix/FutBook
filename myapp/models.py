@@ -1,9 +1,14 @@
 # Create your models here.
+from multiprocessing.sharedctypes import Value
+from pyexpat import model
+from random import random
+from statistics import mode
+from django import conf
 from django.db import models
-
-
+import random 
+from django.utils.crypto import get_random_string
 # Create your models here.
-
+conf_code = get_random_string(length=5)
 class ground(models.Model):
     Grounds = models.CharField(max_length=40)
     FutsalName = models.CharField(max_length=30)
@@ -12,8 +17,7 @@ class ground(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=6)
     date = models.DateField()
     time = models.CharField(max_length=30)
-
-
+    code = models.CharField(default=conf_code, max_length=5)
     def __str__(self):
         return self.Grounds
 
@@ -39,11 +43,13 @@ class Book(models.Model):
     userid =models.DecimalField(decimal_places=0, max_digits=2)
     Grounds = models.CharField(max_length=30)
     FutsalName = models.CharField(max_length=30)
-    nos = models.DecimalField(decimal_places=0, max_digits=2)
     price = models.DecimalField(decimal_places=2, max_digits=6)
     date = models.DateField()
     time = models.CharField(max_length=30)
     status = models.CharField(choices=TICKET_STATUSES, default=BOOKED, max_length=2)
+    code = models.CharField(default=conf_code, max_length=5)
+    
 
     def __str__(self):
         return self.email
+        

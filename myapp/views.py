@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from .forms import UserLoginForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from decimal import Decimal
-
+import random
 
 def home(request):
     if request.user.is_authenticated:
@@ -56,7 +56,7 @@ def bookings(request):
                 time_r = Ground.time
                 ground.objects.filter(id=id_r).update(rem=rem_r)
                 book = Book.objects.create(name=username_r, email=email_r, userid=userid_r, Grounds=name_r,
-                                           FutsalName=source_r, price=price_r, nos=seats_r, date=date_r, time=time_r,
+                                           FutsalName=source_r, price=price_r, date=date_r, time=time_r,
                                            status='BOOKED')
                 print('------------book id-----------', book.id)
                 # book.save()

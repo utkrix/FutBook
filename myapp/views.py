@@ -120,3 +120,6 @@ def success(request):
     context = {}
     context['user'] = request.user
     return render(request, 'myapp/success.html', context)
+
+
+# @csrf_exempt for ngrok integration
